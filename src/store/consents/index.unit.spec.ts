@@ -14,7 +14,7 @@ describe("Consents reducer", () => {
 
   it("has correct initial state", async () => {
     const consents = store.getState().consents;
-    expect(consents.length).toEqual(0);
+    expect(consents).toEqual({ loading: false, data: [], error: undefined });
   });
 
   it("dispatches consent correctly", async () => {
@@ -30,6 +30,6 @@ describe("Consents reducer", () => {
     };
     store.dispatch(addConsentAction(consent));
     const consents = store.getState().consents;
-    expect(consents).toEqual([consent]);
+    expect(consents.data).toEqual([consent]);
   });
 });
