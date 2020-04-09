@@ -37,6 +37,7 @@
     "prettier": "^2.0.4"
   },
   "scripts": {
+    "dry-build": "tsc --noEmit",
     "storybook": "start-storybook",
     "start": "react-scripts start",
     "build": "react-scripts build",
