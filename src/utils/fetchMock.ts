@@ -9,17 +9,12 @@ const consents: Consent[] = [
     items: [
       { title: "Receive newsletter", agree: true },
       { title: "Be shown targeted ads", agree: true },
-      { title: "Contribute to anonymous usage statistics", agree: false },
     ],
   },
   {
     name: "Princess Carolyn",
     email: "princess@manager.com",
-    items: [
-      { title: "Receive newsletter", agree: true },
-      { title: "Be shown targeted ads", agree: false },
-      { title: "Contribute to anonymous usage statistics", agree: false },
-    ],
+    items: [{ title: "Receive newsletter", agree: true }],
   },
 ];
 
