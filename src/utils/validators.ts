@@ -22,7 +22,7 @@ export const required: FieldValidator<string | undefined> = (value): ValidationE
 
 export const validEmail: FieldValidator<string | undefined> = (email): ValidationError => {
   // obtained from https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-  const regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regexp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   return regexp.test(String(email).toLowerCase()) ? undefined : "Please provide valid email";
 };
