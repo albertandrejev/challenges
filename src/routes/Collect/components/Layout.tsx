@@ -34,7 +34,7 @@ export interface Props {
 
 const emailValidator = composeValidators(required, validEmail);
 
-const Collect: React.FunctionComponent<Props> = ({ onSubmit, consents }): JSX.Element => {
+const Layout: React.FunctionComponent<Props> = ({ onSubmit, consents }): JSX.Element => {
   const classes = useStyles();
   const { form, handleSubmit, submitting, invalid } = useForm({
     onSubmit,
@@ -79,4 +79,4 @@ const Collect: React.FunctionComponent<Props> = ({ onSubmit, consents }): JSX.El
   );
 };
 
-export default Collect;
+export default Layout;
