@@ -6,7 +6,11 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import { configureStore } from "./store";
+import setFetchMocks from "./utils/fetchMock";
 import theme from "./utils/theme";
+
+// This call will set fetch mocks simply remove or comment it in order to disable mocking
+setFetchMocks();
 
 const store = configureStore();
 
