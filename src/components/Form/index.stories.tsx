@@ -2,6 +2,7 @@ import { action } from "@storybook/addon-actions";
 import React from "react";
 import { useForm } from "react-final-form-hooks";
 
+import sleep from "../../utils/test/sleep";
 import Box from "../Box";
 import Button from "../Button";
 import Checkbox from "../Checkbox";
@@ -9,8 +10,6 @@ import TextField from "../TextField";
 import Form, { FormValues, ValidationError } from "./index";
 
 export default { title: "Components/Form" };
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms)); // eslint-disable-line
 
 const onSubmit = async (values: FormValues): Promise<void> => {
   action("onSubmit. Before delay")();
