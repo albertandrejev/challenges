@@ -5,15 +5,21 @@ import PageLink from "./PageLink";
 
 interface Props {
   readonly page: number;
+  readonly margin?: number | string;
   readonly currentPage: boolean;
   readonly onPageSelected: () => void;
 }
 
-const Pagination: React.FunctionComponent<Props> = ({ page, onPageSelected, currentPage }): JSX.Element => {
+const Pagination: React.FunctionComponent<Props> = ({
+  page,
+  onPageSelected,
+  currentPage,
+  margin = 0,
+}): JSX.Element => {
   return (
-    <Box marginLeft={2}>
+    <Box marginLeft={margin}>
       <PageLink disabled={currentPage} onPageSelected={onPageSelected}>
-        {page.toString()}
+        {page}
       </PageLink>
     </Box>
   );

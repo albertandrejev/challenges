@@ -1,17 +1,16 @@
 import React from "react";
 
-import Box from "../../../components/Box";
 import Link from "../../../components/Link";
 import Typography from "../../../components/Typography";
 
 interface Props {
   readonly disabled: boolean;
-  readonly children: string;
+  readonly children: string | number;
   readonly onPageSelected: () => void;
 }
 
 const PageLink: React.FunctionComponent<Props> = ({ disabled, children, onPageSelected }): JSX.Element => (
-  <Box marginLeft={2}>
+  <React.Fragment>
     {disabled && (
       <Typography variant="body2" color="textSecondary">
         {children}
@@ -22,7 +21,7 @@ const PageLink: React.FunctionComponent<Props> = ({ disabled, children, onPageSe
         {children}
       </Link>
     )}
-  </Box>
+  </React.Fragment>
 );
 
 export default PageLink;

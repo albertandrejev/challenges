@@ -52,7 +52,13 @@ const Pagination: React.FunctionComponent<Props> = ({ total, perPage, onPageSele
       </PageLink>
       <Box flexGrow={1} />
       {pagesRange(totalPages).map((page) => (
-        <PageSelector page={page} onPageSelected={onPage(page)} currentPage={page === currentPage} />
+        <PageSelector
+          key={page}
+          page={page}
+          margin={2}
+          onPageSelected={onPage(page)}
+          currentPage={page === currentPage}
+        />
       ))}
       <Box flexGrow={1} />
       <PageLink disabled={currentPage === totalPages} onPageSelected={nextPage}>
