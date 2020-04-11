@@ -3,8 +3,9 @@ import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import App from "./App";
+import App from "./routes";
 import { configureStore } from "./store";
 import setFetchMocks from "./utils/fetchMock";
 import theme from "./utils/theme";
@@ -19,8 +20,10 @@ const render = (Component: React.ComponentType): void => {
     <React.StrictMode>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Component />
+          <Router>
+            <CssBaseline />
+            <Component />
+          </Router>
         </ThemeProvider>
       </Provider>
     </React.StrictMode>,
