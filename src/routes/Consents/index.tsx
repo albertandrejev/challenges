@@ -1,32 +1,26 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Consent } from "../../store/consents";
+import Typography from "../../components/Typography";
+import { loadConsentsAction } from "../../store/consents";
+import { RootState } from "../../store/reducers";
 import Layout from "./components/Layout";
 
-function createData(name: string, email: string, titles: string[]): Consent {
-  return { name, email, items: titles.map((title) => ({ title: title, agree: true })) };
-}
-
-const consents = [
-  createData("Bojack Horseman", "bojack@horseman.com", ["Receive newsletter", "Be shown targeted ads"]),
-  createData("Princess Carolyn", "princess@manager.com", ["Receive newsletter"]),
-  createData("User one", "one@user.com", ["Receive newsletter", "Contribute to anonymous usage statistics"]),
-  createData("User two", "two@user.com", ["Receive newsletter", "Contribute to anonymous usage statistics"]),
-  createData("User three", "three@user.com", [
-    "Be shown targeted ads",
-    "Contribute to anonymous usage statistics",
-  ]),
-  createData("User four", "four@user.com", [
-    "Be shown targeted ads",
-    "Receive newsletter",
-    "Contribute to anonymous usage statistics",
-  ]),
-  createData("User five", "five@user.com", ["Receive newsletter", "Be shown targeted ads"]),
-  createData("User six", "six@user.com", ["Receive newsletter", "Contribute to anonymous usage statistics"]),
-];
-
 const Consents: React.FunctionComponent = (): JSX.Element => {
-  return <Layout consents={consents} />;
+  const consents = useSelector((state: RootState) => state.consents);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(loadConsentsAction());
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <React.Fragment>
+      {consents.loading && <Typography>Data is loading</Typography>}
+      {consents.error && <Typography>Error: {consents.error}</Typography>}
+      {!consents.loading && !consents.error && <Layout consents={consents.data} />}
+    </React.Fragment>
+  );
 };
 
 export default Consents;
