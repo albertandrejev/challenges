@@ -8,7 +8,7 @@ import Table, { TABLE_WIDTH } from "./Table";
 export const CONSENTS_PER_PAGE = 2;
 
 interface Props {
-  readonly consents: Consent[];
+  readonly consents: readonly Consent[];
 }
 
 const Layout: React.FunctionComponent<Props> = ({ consents }): JSX.Element => {
@@ -22,9 +22,11 @@ const Layout: React.FunctionComponent<Props> = ({ consents }): JSX.Element => {
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" marginTop={5} maxWidth={TABLE_WIDTH}>
-      <Table consents={pageConsents} />
-      <Pagination total={consents.length} perPage={CONSENTS_PER_PAGE} onPageSelected={onPageSelected} />
+    <Box display="flex" flexDirection="column" alignItems="center">
+      <Box width={TABLE_WIDTH}>
+        <Table consents={pageConsents} />
+        <Pagination total={consents.length} perPage={CONSENTS_PER_PAGE} onPageSelected={onPageSelected} />
+      </Box>
     </Box>
   );
 };

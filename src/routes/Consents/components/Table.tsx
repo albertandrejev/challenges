@@ -10,7 +10,7 @@ import TableHead from "../../../components/TableHead";
 import TableRow from "../../../components/TableRow";
 import { Consent } from "../../../store/consents";
 
-export const TABLE_WIDTH = 960;
+export const TABLE_WIDTH = 820;
 
 const useStyles = makeStyles({
   table: {
