@@ -18,8 +18,8 @@ export interface ConsentValue {
   readonly label: string;
 }
 
-const NAME_INPUT_FIELD = "nameField";
-const EMAIL_INPUT_FIELD = "emailField";
+export const NAME_INPUT_FIELD = "nameField";
+export const EMAIL_INPUT_FIELD = "emailField";
 
 const useStyles = makeStyles((theme: Theme) => ({
   fieldMargin: {
