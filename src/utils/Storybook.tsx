@@ -1,6 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ThemeProvider } from "@material-ui/styles";
-import * as React from "react";
+import React from "react";
+import { MemoryRouter as Router } from "react-router-dom";
 
 import theme from "./theme";
 
@@ -11,7 +12,10 @@ interface Props {
 const Storybook: React.FunctionComponent<Props> = ({ children }): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
-      <CssBaseline>{children}</CssBaseline>
+      <Router>
+        <CssBaseline />
+        {children}
+      </Router>
     </ThemeProvider>
   );
 };
