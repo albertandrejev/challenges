@@ -4,7 +4,7 @@ import { aNewStore } from "../../store";
 import { randomString } from "../../utils/test/random";
 import { AllActions, RootState } from "../reducers";
 import { Consent } from ".";
-import { addConsentAction } from "./actions";
+import { setConsentsAction } from "./actions";
 
 describe("Consents reducer", () => {
   let store: Store<RootState, AllActions>;
@@ -28,7 +28,7 @@ describe("Consents reducer", () => {
         { title: randomString(10), agree: true },
       ],
     };
-    store.dispatch(addConsentAction(consent));
+    store.dispatch(setConsentsAction([consent]));
     const consents = store.getState().consents;
     expect(consents.data).toEqual([consent]);
   });

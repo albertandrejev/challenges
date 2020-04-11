@@ -1,23 +1,23 @@
 import { Dispatch } from "redux";
 
-import {
-  AddConsentActionType,
-  Consent,
-  SetConsentsActionType,
-  SetErrorActionType,
-  SetLoadingActionType,
-} from "./reducer";
+import { Consent, SetConsentsActionType, SetErrorActionType, SetLoadingActionType } from "./reducer";
 
-export const postConsentAction = (consents: Consent[]) => (dispatch: Dispatch) => {
-  dispatch(setConsentAction(consents));
+export const loadConsentsAction = () => async (dispatch: Dispatch) => {
+  dispatch(setLoadingAction(true));
+  try {
+    const result = await fetch("/consents");
+    if (result.ok) {
+      const consents = await result.json();
+      dispatch(setConsentsAction(consents));
+    } else {
+      dispatch(setErrorAction(new Error("Unable to load data"), true));
+    }
+  } catch (err) {
+    dispatch(setErrorAction(err, true));
+  }
 };
 
-export const addConsentAction = (consent: Consent): AddConsentActionType => ({
-  type: "@@consents/ADD",
-  payload: consent,
-});
-
-export const setConsentAction = (consents: Consent[]): SetConsentsActionType => ({
+export const setConsentsAction = (consents: Consent[]): SetConsentsActionType => ({
   type: "@@consents/SET",
   payload: consents,
 });

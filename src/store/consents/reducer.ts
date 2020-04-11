@@ -47,11 +47,6 @@ const initState: ConsentsState = { loading: false, data: [], error: undefined };
 
 export function consentsReducer(state: ConsentsState = initState, action: ConsentActions): ConsentsState {
   switch (action.type) {
-    case "@@consents/ADD":
-      return {
-        ...state,
-        data: [...state.data, action.payload],
-      };
     case "@@consents/SET":
       return {
         loading: false,
