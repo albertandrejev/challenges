@@ -61,7 +61,7 @@ const Pagination: React.FunctionComponent<Props> = ({ total, perPage, onPageSele
         />
       ))}
       <Box flexGrow={1} />
-      <PageLink disabled={currentPage === totalPages} onPageSelected={nextPage}>
+      <PageLink disabled={currentPage >= totalPages} onPageSelected={nextPage}>
         Next page &gt;&gt;
       </PageLink>
     </Box>
