@@ -1,4 +1,5 @@
 import { makeStyles, Theme } from "@material-ui/core";
+import { FormApi } from "final-form";
 import React from "react";
 import { useForm } from "react-final-form-hooks";
 
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export interface Props {
-  readonly onSubmit: (values: FormValues) => void;
+  readonly onSubmit: (values: FormValues, form: FormApi<FormValues>) => void;
   readonly consents: ConsentValue[];
 }
 
