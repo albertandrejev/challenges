@@ -9,6 +9,11 @@ interface Props {
   readonly children: React.ReactNode;
 }
 
+/**
+ * Storybook wrapper used to wrap storybook stories.
+ *
+ * See .storybook/preview.js
+ */
 const Storybook: React.FunctionComponent<Props> = ({ children }): JSX.Element => {
   return (
     <ThemeProvider theme={theme}>
