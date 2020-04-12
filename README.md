@@ -60,6 +60,10 @@ Launches DOM tests.
 
 Launches unit test.
 
+## REST API Mock
+
+Right now all calls to the REST API using `fetch` are mocked. In order to remove mock please comment or remove line with `setFetchMocks();` method call in [index.tsx](./src/index.tsx).
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
