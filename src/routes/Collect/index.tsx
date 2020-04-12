@@ -1,6 +1,8 @@
+import { FormApi } from "final-form";
 import React from "react";
 
 import { FormValues } from "../../components/Form";
+import Snackbar from "../../components/Snackbar";
 import { Consent } from "../../store/consents";
 import Layout, { ConsentValue, EMAIL_INPUT_FIELD, NAME_INPUT_FIELD } from "./components/Layout";
 
@@ -11,7 +13,9 @@ const consents: ConsentValue[] = [
 ];
 
 const Collect: React.FunctionComponent = (): JSX.Element => {
-  const onSubmit = async (values: FormValues): Promise<void> => {
+  const [open, setOpen] = React.useState(false);
+
+  const onSubmit = async (values: FormValues, form: FormApi<FormValues>): Promise<void> => {
     // Assembling data object with user selected consents
     const data: Consent = {
       name: values[NAME_INPUT_FIELD],
@@ -31,10 +35,24 @@ const Collect: React.FunctionComponent = (): JSX.Element => {
       },
       body: JSON.stringify(data),
     });
+    // Should be resetted outside of the onSubmit method
+    setTimeout(form.reset);
+    setOpen(true);
     console.log("Submitted values", values);
   };
 
-  return <Layout onSubmit={onSubmit} consents={consents} />;
+  const close = (): void => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Layout onSubmit={onSubmit} consents={consents} />
+      <Snackbar open={open} close={close}>
+        Consents was added succesfully
+      </Snackbar>
+    </React.Fragment>
+  );
 };
 
 export default Collect;
