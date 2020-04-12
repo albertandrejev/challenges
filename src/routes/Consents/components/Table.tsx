@@ -43,18 +43,21 @@ const ConsentsTable: React.FunctionComponent<Props> = ({ consents }): JSX.Elemen
           </TableRow>
         </TableHead>
         <TableBody>
-          {consents.map((consent) => (
-            <TableRow key={consent.name}>
-              <TableCell>{consent.name}</TableCell>
-              <TableCell>{consent.email}</TableCell>
-              <TableCell>
-                {consent.items
-                  .filter((item) => item.agree)
-                  .map((item) => item.title)
-                  .join(", ")}
-              </TableCell>
-            </TableRow>
-          ))}
+          {consents.map((consent, index) => {
+            // This is not recommnded to use array index as key, but in this case it os ok
+            return (
+              <TableRow key={index}>
+                <TableCell>{consent.name}</TableCell>
+                <TableCell>{consent.email}</TableCell>
+                <TableCell>
+                  {consent.items
+                    .filter((item) => item.agree)
+                    .map((item) => item.title)
+                    .join(", ")}
+                </TableCell>
+              </TableRow>
+            );
+          })}
         </TableBody>
       </Table>
     </TableContainer>
