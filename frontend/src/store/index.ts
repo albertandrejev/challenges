@@ -12,7 +12,7 @@ const middlewares: readonly Middleware[] = [logger, ReduxThunk];
 export const configureStore = (): Store<RootState, AllActions> => {
   const store = createStore(reducers, composeEnhancers(applyMiddleware(...middlewares)));
 
-  if (process.env.NODE_ENV !== "production" && module.hot) {
+  if (module.hot) {
     module.hot.accept("./reducers", (): void => {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
       const nextRootReducer = require("./reducers");
